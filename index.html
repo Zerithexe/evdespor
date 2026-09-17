@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0f14" />
+  <meta name="description" content="HomeFit AI — evde hedefe göre akıllı antrenman, koç ve hatırlatıcı sistemi." />
+  <title>HomeFit AI — Evde Akıllı Fitness Koçu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#dashboard" aria-label="HomeFit AI ana sayfa">
+        <span class="brand-mark">HF</span>
+        <span>
+          <strong>HomeFit <em>AI</em></strong>
+          <small>Evde güçlü. Akıllı. Dengeli.</small>
+        </span>
+      </a>
+      <div class="header-actions">
+        <button class="icon-btn" id="notificationBtn" title="Bildirim izni" aria-label="Bildirim izni">🔔</button>
+        <button class="avatar" id="openProfile" title="Profil">Ö</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="dashboard">
+        <div class="hero-copy">
+          <div class="eyebrow">SMART FITNESS SYSTEM</div>
+          <h1>Bugünkü hareket planını <span>sen değil, hedefin</span> belirlesin.</h1>
+          <p>Kas gelişimi, sağlıklı kilo yönetimi veya günlük zindelik için ekipmanına ve zamanına göre kişiselleştirilmiş ev antrenmanı oluştur.</p>
+          <div class="hero-buttons">
+            <button class="primary-btn" data-scroll="#planner">Programımı Oluştur <span>→</span></button>
+            <button class="ghost-btn" data-scroll="#coach">AI Koçla Konuş</button>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-orbit orbit-1"></div>
+          <div class="hero-orbit orbit-2"></div>
+          <div class="hero-person" aria-label="Animasyonlu insan figürü">
+            <div class="person-head"></div>
+            <div class="person-neck"></div>
+            <div class="person-torso"></div>
+            <div class="person-arm arm-left"></div>
+            <div class="person-arm arm-right"></div>
+            <div class="person-leg leg-left"></div>
+            <div class="person-leg leg-right"></div>
+          </div>
+          <div class="hero-stat stat-a"><strong id="heroSessions">0</strong><span>planlanan seans</span></div>
+          <div class="hero-stat stat-b"><strong id="heroStreak">0</strong><span>gün seri</span></div>
+        </div>
+      </section>
+
+      <section class="section" id="quickStart">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">HEDEFİNİ SEÇ</span>
+            <h2>Bugün ne için çalışıyoruz?</h2>
+          </div>
+          <span class="section-caption">Tek seçimle tüm planın değişir.</span>
+        </div>
+        <div class="goal-grid">
+          <button class="goal-card active" data-goal="muscle">
+            <span class="goal-icon">◒</span>
+            <strong>Kas & Güç</strong>
+            <small>Evde kas gruplarına odaklan</small>
+          </button>
+          <button class="goal-card" data-goal="weight">
+            <span class="goal-icon">↗</span>
+            <strong>Sağlıklı Kilo Yönetimi</strong>
+            <small>Hareket + dayanıklılık + sürdürülebilirlik</small>
+          </button>
+          <button class="goal-card" data-goal="wellness">
+            <span class="goal-icon">✦</span>
+            <strong>Fit & Sağlıklı Yaşam</strong>
+            <small>Enerji, mobilite ve günlük zindelik</small>
+          </button>
+        </div>
+      </section>
+
+      <section class="section planner-section" id="planner">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">PROGRAM MOTORU</span>
+            <h2>Kendi antrenmanını kur</h2>
+          </div>
+          <div class="smart-badge"><span></span> Akıllı öneri aktif</div>
+        </div>
+
+        <div class="planner-grid">
+          <div class="panel planner-panel">
+            <div class="input-block">
+              <label>Program günleri</label>
+              <div class="day-picker" id="dayPicker">
+                <button data-day="1">Pzt</button><button data-day="2">Sal</button><button data-day="3">Çar</button><button data-day="4">Per</button><button data-day="5">Cum</button><button data-day="6">Cmt</button><button data-day="0">Paz</button>
+              </div>
+            </div>
+
+            <div class="input-block">
+              <label>Seans süresi</label>
+              <div class="segmented" id="durationPicker">
+                <button data-duration="20">20 dk</button><button class="active" data-duration="30">30 dk</button><button data-duration="45">45 dk</button><button data-duration="60">60 dk</button>
+              </div>
+            </div>
+
+            <div class="input-block">
+              <label>Ekipman</label>
+              <div class="equipment-grid" id="equipmentPicker">
+                <button class="equip active" data-equipment="body"><span>◉</span> Ekipmansız</button>
+                <button class="equip" data-equipment="dumbbell"><span>▣</span> Dambıl</button>
+                <button class="equip" data-equipment="band"><span>⌁</span> Direnç bandı</button>
+                <button class="equip" data-equipment="chair"><span>▤</span> Sandalye</button>
+                <button class="equip" data-equipment="backpack"><span>▰</span> Çanta</button>
+                <button class="equip" data-equipment="all"><span>✦</span> Karışık</button>
+              </div>
+            </div>
+
+            <div class="input-block">
+              <label>Zorluk</label>
+              <div class="segmented" id="levelPicker">
+                <button data-level="beginner">Başlangıç</button><button class="active" data-level="intermediate">Orta</button><button data-level="advanced">İleri</button>
+              </div>
+            </div>
+
+            <button class="primary-btn full" id="buildPlan">Planı Akıllıca Oluştur <span>✦</span></button>
+          </div>
+
+          <div class="panel plan-preview">
+            <div class="panel-topline">
+              <div>
+                <span class="eyebrow">KİŞİSEL PLAN</span>
+                <h3 id="planTitle">Güç & Kas — Ev Seansı</h3>
+              </div>
+              <span class="plan-score" id="planScore">94%</span>
+            </div>
+            <div class="plan-meta" id="planMeta">30 dk · Ekipmansız · Orta seviye</div>
+            <div class="workout-preview" id="workoutPreview"></div>
+            <div class="plan-note"><span>AI</span><p id="planNote">Seçtiğin hedef ve süreye göre kas gruplarını dengeli dağıttım. Hareketleri kaliteli tekrar ve kontrollü tempoyla yap.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section exercise-section" id="exercises">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">HAREKET KÜTÜPHANESİ</span>
+            <h2>Hareketi gör, doğru uygula</h2>
+          </div>
+          <div class="filter-row" id="exerciseFilters">
+            <button class="filter active" data-filter="all">Tümü</button>
+            <button class="filter" data-filter="legs">Bacak</button>
+            <button class="filter" data-filter="chest">Göğüs</button>
+            <button class="filter" data-filter="back">Sırt</button>
+            <button class="filter" data-filter="core">Core</button>
+          </div>
+        </div>
+        <div class="exercise-grid" id="exerciseGrid"></div>
+      </section>
+
+      <section class="section coach-section" id="coach">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">AI COACH</span>
+            <h2>Derdini anlat, planını birlikte düzeltelim.</h2>
+          </div>
+          <span class="coach-status"><span></span> Hazır</span>
+        </div>
+        <div class="coach-grid">
+          <div class="panel coach-chat">
+            <div class="chat-messages" id="chatMessages">
+              <div class="bubble ai"><strong>HomeFit AI</strong><br>Selam! Hedefini, elindeki ekipmanı ve bugün ayırabileceğin zamanı söyle. Sana uygun bir başlangıç önerisi çıkarayım.</div>
+            </div>
+            <div class="quick-prompts" id="quickPrompts">
+              <button data-prompt="Bugün 30 dakikam var, ekipmansız kas çalışmak istiyorum.">30 dk kas</button>
+              <button data-prompt="Evde 20 dakikalık enerjik bir antrenman öner.">20 dk zindelik</button>
+              <button data-prompt="Sandalye ve çantam var, orta seviye plan yap.">Sandalye + çanta</button>
+              <button data-prompt="Bugün daha hafif bir gün yapmak istiyorum.">Hafif gün</button>
+            </div>
+            <form class="chat-input" id="coachForm">
+              <input id="coachInput" type="text" placeholder="Örn. bugün 45 dakikam var ve dambıl kullanabilirim..." autocomplete="off" />
+              <button type="submit" aria-label="Gönder">↑</button>
+            </form>
+          </div>
+          <aside class="panel coach-insights">
+            <div class="insight-head"><span class="eyebrow">KOÇ ÖZETİ</span><span class="pulse-dot"></span></div>
+            <div class="insight-big"><strong id="readiness">82</strong><span>/100<br>hazırlık</span></div>
+            <div class="meter"><span id="readinessMeter"></span></div>
+            <div class="insight-item"><span>→</span><div><strong>Bugün</strong><small id="todayFocus">Göğüs + bacak + core</small></div></div>
+            <div class="insight-item"><span>↗</span><div><strong>Yüklenme</strong><small id="loadText">Orta — kontrollü ilerle</small></div></div>
+            <div class="insight-item"><span>◷</span><div><strong>Toplam hareket</strong><small id="moveCount">6 egzersiz</small></div></div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section reminder-section" id="reminders">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">AKILLI HATIRLATICI</span>
+            <h2>“Spor saati” geldiğinde haber ver.</h2>
+          </div>
+          <span class="section-caption">Tarayıcı izinleri ile çalışır.</span>
+        </div>
+        <div class="reminder-grid">
+          <div class="panel reminder-panel">
+            <div class="reminder-row">
+              <div><strong>Antrenman hatırlatması</strong><small>Seçtiğin gün ve saatte tarayıcı bildirimi</small></div>
+              <label class="switch"><input type="checkbox" id="reminderEnabled"><span></span></label>
+            </div>
+            <div class="reminder-controls">
+              <label>Günler<select id="reminderDays"><option value="daily">Her gün</option><option value="selected">Program günlerim</option></select></label>
+              <label>Saat<input type="time" id="reminderTime" value="19:00"></label>
+            </div>
+            <button class="secondary-btn full" id="saveReminder">Hatırlatmayı Kaydet</button>
+            <p class="tiny-note">Not: GitHub Pages üzerinde sayfa açıkken çalışan tarayıcı bildirimi kullanılabilir. Sekme tamamen kapalıyken garantili push bildirimi için ayrı bir Service Worker + push sunucusu gerekir.</p>
+          </div>
+          <div class="panel routine-card">
+            <div class="routine-icon">⏱</div>
+            <h3>Bugünün mini rutini</h3>
+            <p>Su · 3–5 dk ısınma · ana antrenman · kısa soğuma · dinlenme</p>
+            <div class="routine-line"><span></span><span></span><span></span><span></span></div>
+            <small>Hatırlatma sistemi her açılışta kayıtlı ayarını kontrol eder.</small>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div><strong>HomeFit AI</strong><span>© 2026 · Evde dengeli hareket için.</span></div>
+      <div class="footer-links"><a href="#planner">Program</a><a href="#exercises">Hareketler</a><a href="#coach">AI Koç</a></div>
+    </footer>
+  </div>
+
+  <div class="modal hidden" id="profileModal" role="dialog" aria-modal="true" aria-labelledby="profileTitle">
+    <div class="modal-box">
+      <button class="modal-close" id="closeProfile">×</button>
+      <span class="eyebrow">PROFİL</span>
+      <h3 id="profileTitle">Kendini tanıt</h3>
+      <p class="modal-copy">Koç önerilerini daha iyi kişiselleştirmek için birkaç bilgi.</p>
+      <div class="form-grid">
+        <label>İsim<input id="profileName" type="text" placeholder="Örn. Ömer"></label>
+        <label>Deneyim<select id="profileExperience"><option value="beginner">Yeni başlıyorum</option><option value="intermediate" selected>Bir süredir yapıyorum</option><option value="advanced">İleri</option></select></label>
+      </div>
+      <button class="primary-btn full" id="saveProfile">Kaydet</button>
+    </div>
+  </div>
+
+  <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
